@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Sign In</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <p>
+      <h4>Новый пользователь?</h4>
+      <a href="{{ url_for('register') }}"><h4>Нажмите, чтобы зарегистрироваться!</h4></a>
+    </p>
+    <p>
+      Забыл пароль?
+      <a href="{{ url_for('reset_password_request') }}">Нажми, чтобы сброситьz</a>
+    </p>
+{% endblock %}
